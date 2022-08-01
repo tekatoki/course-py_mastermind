@@ -1,0 +1,8 @@
+# Ignore the default file of pycharm
+main.py
+
+# Ignore the directory .idea
+.idea
+
+# Ignore the library root
+venv
