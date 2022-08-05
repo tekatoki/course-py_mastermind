@@ -11,6 +11,18 @@ def enter_continue():
     input('Press ENTER to continue>')
 
 
+def checks_pokemon_die(life_pokemon_player, life_pokemon_cpu):
+    if life_pokemon_player <= 0:
+        print('You lose the battle!! :(')
+        input('The battle is over>')
+        exit()
+
+    elif life_pokemon_cpu <= 0:
+        print('You win the battle!! :)')
+        input('The battle is over>')
+        exit()
+
+
 def battle_run(life_pokemon_player, life_pokemon_cpu):  # While to run the battle until one die
     print('Battle with wild Pikachu!!')
     enter_continue()
@@ -39,15 +51,7 @@ def battle_run(life_pokemon_player, life_pokemon_cpu):  # While to run the battl
 
         enter_continue()
 
-        if life_pokemon_player <= 0:  # Checks if a pokemon died and exit the while
-            print('You lose the battle!! :(')
-            input('The battle is over>')
-            exit()
-
-        elif life_pokemon_cpu <= 0:
-            print('You win the battle!! :)')
-            input('The battle is over>')
-            exit()
+        checks_pokemon_die(life_pokemon_player, life_pokemon_cpu)
 
         show_life(life_pokemon_player, life_pokemon_cpu)
         enter_continue()
@@ -86,15 +90,8 @@ def battle_run(life_pokemon_player, life_pokemon_cpu):  # While to run the battl
             print('Please, insert a valid option [1, 2, 3]')
             enter_continue()
 
-        if life_pokemon_player <= 0:  # Checks if a pokemon died and exit while
-            print('You lose the battle!! :(')
-            input('The battle is over>')
-            exit()
-
-        elif life_pokemon_cpu <= 0:
-            print('You win the battle!! :)')
-            input('The battle is over>')
-            exit()
+        checks_pokemon_die(life_pokemon_player, life_pokemon_cpu)
+        # If any pokemon died continue:
 
         show_life(life_pokemon_player, life_pokemon_cpu)
         enter_continue()
