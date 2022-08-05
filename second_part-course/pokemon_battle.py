@@ -1,8 +1,26 @@
 from random import randint
+import os
 # Pokémon battle made on python
 
 
+def clear():
+    if os.name == 'posix':
+        os.system('clear')
+
+    elif os.name == 'ce' or os.name == 'nt' or os.name == 'dos':
+        os.system('cls')
+
+    else:
+        os.system('clear')
+
+
 def show_life(life_pokemon_player, life_pokemon_cpu):
+    if life_pokemon_player < 0:
+        life_pokemon_player = 0
+
+    elif life_pokemon_cpu < 0:
+        life_pokemon_cpu = 0
+
     progress_bar_life_player = int(life_pokemon_player * 10 / LIFE_SQUIRTLE)
     progress_bar_life_cpu = int(life_pokemon_cpu * 10 / LIFE_PIKACHU)
 
@@ -15,15 +33,18 @@ def show_life(life_pokemon_player, life_pokemon_cpu):
 
 def enter_continue():
     input('Press ENTER to continue>')
+    clear()
 
 
 def checks_pokemon_die(life_pokemon_player, life_pokemon_cpu):
     if life_pokemon_player <= 0:
+        show_life(life_pokemon_player, life_pokemon_cpu)
         print('You lose the battle!! :(')
         input('The battle is over>')
         exit()
 
     elif life_pokemon_cpu <= 0:
+        show_life(life_pokemon_player, life_pokemon_cpu)
         print('You win the battle!! :)')
         input('The battle is over>')
         exit()
@@ -96,15 +117,20 @@ def battle_run(life_pokemon_player, life_pokemon_cpu):  # While to run the battl
             print('Please, insert a valid option [1, 2, 3]')
             enter_continue()
 
-        checks_pokemon_die(life_pokemon_player, life_pokemon_cpu)
         # If any pokemon died continue:
 
         show_life(life_pokemon_player, life_pokemon_cpu)
         enter_continue()
 
+    # When you win the battle (because the while exit when the cpu die)
+
+    show_life(life_pokemon_player, life_pokemon_cpu)
+    print('You win the battle!! :)')
+    input('The battle is over>')
+
 
 if __name__ == '__main__':
     LIFE_PIKACHU = 80
-    LIFE_SQUIRTLE = 75
+    LIFE_SQUIRTLE = 85
 
     battle_run(LIFE_SQUIRTLE, LIFE_PIKACHU)
