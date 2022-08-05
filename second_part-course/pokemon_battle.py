@@ -6,10 +6,11 @@ def show_life(life_pokemon_player, life_pokemon_cpu):
     progress_bar_life_player = int(life_pokemon_player * 10 / LIFE_SQUIRTLE)
     progress_bar_life_cpu = int(life_pokemon_cpu * 10 / LIFE_PIKACHU)
 
-    print('Squirtle:  [{}{}] {} life points'
-          .format('#' * progress_bar_life_player, ' ' * (10 - progress_bar_life_player), life_pokemon_player))
-    print('Pikachu:  [{}{}] {} life points'
-          .format('#' * progress_bar_life_cpu, ' ' * (10 - progress_bar_life_cpu), life_pokemon_cpu))
+    print('Squirtle:  [{}{}] ({}/{}) life points'
+          .format('#' * progress_bar_life_player, ' ' *
+                  (10 - progress_bar_life_player), life_pokemon_player, LIFE_SQUIRTLE))
+    print('Pikachu:  [{}{}] ({}/{}) life points'
+          .format('#' * progress_bar_life_cpu, ' ' * (10 - progress_bar_life_cpu), life_pokemon_cpu, LIFE_PIKACHU))
 
 
 def enter_continue():
