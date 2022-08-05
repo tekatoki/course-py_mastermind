@@ -3,8 +3,13 @@ from random import randint
 
 
 def show_life(life_pokemon_player, life_pokemon_cpu):
-    print('Pikachu´s life points: {}'.format(life_pokemon_cpu))
-    print('(You) Squirtle´s life points: {}'.format(life_pokemon_player))
+    progress_bar_life_player = int(life_pokemon_player * 10 / LIFE_SQUIRTLE)
+    progress_bar_life_cpu = int(life_pokemon_cpu * 10 / LIFE_PIKACHU)
+
+    print('Squirtle:  [{}{}] {} life points'
+          .format('#' * progress_bar_life_player, ' ' * (10 - progress_bar_life_player), life_pokemon_player))
+    print('Pikachu:  [{}{}] {} life points'
+          .format('#' * progress_bar_life_cpu, ' ' * (10 - progress_bar_life_cpu), life_pokemon_cpu))
 
 
 def enter_continue():
@@ -98,7 +103,7 @@ def battle_run(life_pokemon_player, life_pokemon_cpu):  # While to run the battl
 
 
 if __name__ == '__main__':
-    life_pikachu = 80
-    life_squirtle = 75
+    LIFE_PIKACHU = 80
+    LIFE_SQUIRTLE = 75
 
-    battle_run(life_squirtle, life_pikachu)
+    battle_run(LIFE_SQUIRTLE, LIFE_PIKACHU)
