@@ -17,13 +17,13 @@ def program():
     phrase = input('Insert your phrase> ')
     clear()
 
-    blank_spaces = 0
+    white_spaces = 0
     commas = 0
     dots = 0
 
     for i in phrase:
         if i == ' ':
-            blank_spaces += 1
+            white_spaces += 1
 
         elif i == ',':
             commas += 1
@@ -34,7 +34,7 @@ def program():
     print('Your phrase: {} has:\n'
           'blanks_spaces: {}\n'
           'commas: {}\n'
-          'dots: {}\n'.format(phrase, blank_spaces, commas, dots))
+          'dots: {}\n'.format(phrase, white_spaces, commas, dots))
 
 
 if __name__ == '__main__':
