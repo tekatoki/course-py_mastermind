@@ -1,4 +1,3 @@
-import string
 import os
 '''
 This code shows all the multiplication table of a number that you insert on the console
@@ -22,9 +21,8 @@ def clear():
 
 
 def for_table(parameter_number):
-    number_table_multiplication = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    for number in number_table_multiplication:
+    for number in range(1, 11):
         print('{} x {} = {}'.format(number, parameter_number, number * parameter_number))
 
 
