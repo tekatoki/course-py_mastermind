@@ -32,7 +32,7 @@ def shop_list_program(parameter_array):
         elif user_input not in ['Q', 'q']:
 
             if user_input in parameter_array:
-                input('You have already {} save in your list [ENTER to continue]> ')
+                input('You have already {} save in your list [ENTER to continue]> '.format(user_input))
                 clear()
 
             else:
