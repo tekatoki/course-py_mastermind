@@ -1,5 +1,7 @@
+import random
 import msvcrt
 import os
+
 # Program that creates a little terminal game like Rogue
 
 
@@ -14,8 +16,9 @@ def clear():
         os.system('clear')
 
 
-def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_coordinate):
+def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_coordinate, parameter_objects):
     # The parameter_player_coordinate must be an array with two ints
+    # The parameter_objects must be an array as well
 
     # Checks if the player is in the limit of the map
     # If the player is in the limit of the map, it will appear on the other side of the map
@@ -30,14 +33,18 @@ def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_co
 
     for coordinate_y in range(parameter_map_height_y):
         print('|', end='')
-        
         for coordinate_x in range(parameter_map_width_x):
+            print_nothing = 0  # 0 = true | 1 = false
+            for object_array in parameter_objects:  # Prints the objects
+                if object_array[0] == coordinate_x and object_array[1] == coordinate_y:
+                    print(' * ', end='')
+                    print_nothing = 1
+
             if parameter_player_coordinate[1] == coordinate_y and parameter_player_coordinate[0] == coordinate_x:
                 print(' @ ', end='')
 
-            else:
+            elif print_nothing == 0:
                 print('   ', end='')
-
         print('|')
 
     print('+' + '-' * parameter_map_width_x * 3 + '+')
@@ -48,11 +55,21 @@ def main_program():
     MAP_WIDTH_X = 20
     MAP_HEIGHT_Y = 15
 
+    # [Position_X, Position_Y]
+
     # Coordinates of the player
-    player_position = [3, 1]  # [Position_X, Position_Y]
+    player_position = [3, 1]
+
+    # Coordinates of the map's items
+    # The items of the array will be created automatically
+    map_items = []
+    i = 0
+    while i < 5:
+        map_items.append([random.randint(1, 20), random.randint(1, 15)])
+        i += 1
 
     # Show the map for first time
-    print_map(MAP_WIDTH_X, MAP_HEIGHT_Y, player_position)
+    print_map(MAP_WIDTH_X, MAP_HEIGHT_Y, player_position, map_items)
 
     # The var to store the direction of the player
     direction = ''
@@ -76,7 +93,7 @@ def main_program():
             pass
 
         clear()
-        print_map(MAP_WIDTH_X, MAP_HEIGHT_Y, player_position)
+        print_map(MAP_WIDTH_X, MAP_HEIGHT_Y, player_position, map_items)
 
 
 if __name__ == '__main__':
