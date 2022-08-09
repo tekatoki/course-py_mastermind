@@ -30,18 +30,12 @@ def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_co
 
     for coordinate_y in range(parameter_map_height_y):
         print('|', end='')
+        
+        for coordinate_x in range(parameter_map_width_x):
+            if parameter_player_coordinate[1] == coordinate_y and parameter_player_coordinate[0] == coordinate_x:
+                print(' @ ', end='')
 
-        if parameter_player_coordinate[1] == coordinate_y:
-            # This if_else statement is to print the player if its coordinates are the coordinate_y and coordinate_x
-
-            for coordinate_x in range(parameter_map_width_x):
-
-                if parameter_player_coordinate[0] == coordinate_x:
-                    print(' @ ', end='')
-                else:
-                    print('   ', end='')
-        else:
-            for coordinate_x in range(parameter_map_width_x):
+            else:
                 print('   ', end='')
 
         print('|')
