@@ -34,17 +34,16 @@ def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_co
     for coordinate_y in range(parameter_map_height_y):
         print('|', end='')
         for coordinate_x in range(parameter_map_width_x):
-            print_nothing = 0  # 0 = true | 1 = false
+            symbol_print = ' '
+
             for object_array in parameter_objects:  # Prints the objects
                 if object_array[0] == coordinate_x and object_array[1] == coordinate_y:
-                    print(' * ', end='')
-                    print_nothing = 1
+                    symbol_print = '*'
 
             if parameter_player_coordinate[1] == coordinate_y and parameter_player_coordinate[0] == coordinate_x:
-                print(' @ ', end='')
+                symbol_print = '@'
 
-            elif print_nothing == 0:
-                print('   ', end='')
+            print(' {} '.format(symbol_print), end='')
         print('|')
 
     print('+' + '-' * parameter_map_width_x * 3 + '+')
