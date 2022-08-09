@@ -17,6 +17,21 @@ def clear():
 def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_coordinate):
     # The parameter_player_coordinate must be an array
 
+    # Checks if the player is in the limit of the map
+    # If the player is in the limit of the map, it will appear on the other side of the map
+
+    # For the coordinate x
+    if parameter_player_coordinate[0] == parameter_map_width_x:
+        parameter_player_coordinate[0] = parameter_map_width_x - parameter_map_width_x
+    elif parameter_player_coordinate[0] == (parameter_map_width_x - parameter_map_width_x):
+        parameter_player_coordinate[0] = parameter_map_width_x - 1
+
+    # For the coordinate y
+    if parameter_player_coordinate[1] == parameter_map_height_y:
+        parameter_player_coordinate[1] = parameter_map_height_y - parameter_map_height_y
+    elif parameter_player_coordinate[1] == parameter_map_height_y - parameter_map_height_y:
+        parameter_player_coordinate[1] = parameter_map_height_y - 1
+
     print('+' + '-' * parameter_map_width_x * 3 + '+')
 
     for coordinate_y in range(parameter_map_height_y):
