@@ -16,11 +16,11 @@ def clear():
         os.system('clear')
 
 
-def random_items(parameter_array, number_iterates):
+def random_items(parameter_array, number_iterates, parameter_map_width, parameter_map_height):
     # Function that creates a number of items in an array that you insert as a parameter
     i = 0
     while i < number_iterates:
-        parameter_array.append([random.randint(1, 20), random.randint(1, 15)])
+        parameter_array.append([random.randint(0, parameter_map_width), random.randint(0, parameter_map_height)])
         # This random.randint creates the automatically a coordinate X and Y
         i += 1
 
@@ -63,18 +63,23 @@ def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_co
 
 
 def main_program():
+    # Main constants:
+
     # Map coordinates
     MAP_WIDTH_X = 20
     MAP_HEIGHT_Y = 15
+
+    # Number of items
+    NUMBER_ITEMS = 10
 
     # [Position_X, Position_Y]
 
     # Coordinates of the player
     player_position = [3, 1]
 
-    # Coordinates of the map's items
+    # Create coordinates of the map's items
     map_items = []
-    random_items(map_items, 10)
+    random_items(map_items, NUMBER_ITEMS, MAP_WIDTH_X, MAP_HEIGHT_Y)
 
     # Show the map for first time
     print_map(MAP_WIDTH_X, MAP_HEIGHT_Y, player_position, map_items)
