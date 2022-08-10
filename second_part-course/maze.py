@@ -40,6 +40,10 @@ def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_co
                 if object_array[0] == coordinate_x and object_array[1] == coordinate_y:
                     symbol_print = '*'
 
+                elif object_array[0] == parameter_player_coordinate[0]\
+                        and object_array[1] == parameter_player_coordinate[1]:
+                    parameter_objects.remove(object_array)
+
             if parameter_player_coordinate[1] == coordinate_y and parameter_player_coordinate[0] == coordinate_x:
                 symbol_print = '@'
 
