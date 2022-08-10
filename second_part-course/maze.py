@@ -67,7 +67,7 @@ def main_program():
     # The items of the array will be created automatically
     map_items = []
     i = 0
-    while i < 5:
+    while i < 10:
         map_items.append([random.randint(1, 20), random.randint(1, 15)])
         i += 1
 
