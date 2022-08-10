@@ -16,6 +16,15 @@ def clear():
         os.system('clear')
 
 
+def random_items(parameter_array, number_iterates):
+    # Function that creates a number of items in an array that you insert as a parameter
+    i = 0
+    while i < number_iterates:
+        parameter_array.append([random.randint(1, 20), random.randint(1, 15)])
+        # This random.randint creates the automatically a coordinate X and Y
+        i += 1
+
+
 def print_map(parameter_map_width_x, parameter_map_height_y, parameter_player_coordinate, parameter_objects):
     # The parameter_player_coordinate must be an array with two ints
     # The parameter_objects must be an array as well
@@ -64,12 +73,8 @@ def main_program():
     player_position = [3, 1]
 
     # Coordinates of the map's items
-    # The items of the array will be created automatically
     map_items = []
-    i = 0
-    while i < 10:
-        map_items.append([random.randint(1, 20), random.randint(1, 15)])
-        i += 1
+    random_items(map_items, 10)
 
     # Show the map for first time
     print_map(MAP_WIDTH_X, MAP_HEIGHT_Y, player_position, map_items)
